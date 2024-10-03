@@ -13,7 +13,7 @@
   <body>
     <div class="container"> 
     <h1>Listado de Comunas</h1>
-   <a href="{{route('comunas.create')}}" class="btn btn-success">Add</a> 
+   <a href="{{route('comunas.create')}}" class="btn btn-success">Agregar</a> 
     <table class="table">
   <thead>
     <tr>
@@ -30,11 +30,14 @@
       <td>{{ $comuna->comu_nomb }}</td>
       <td>{{ $comuna->muni_nomb }}</td>
       <td> 
-        <form action="{{ route('comunas.destroy', ['comuna' => $comuna->  comu_codi]) }}"
+        <a href="{{route('comunas.edit',['comuna'=>$comuna->comu_codi]) }}"
+           class="btn btn-info">Editar</a>
+
+        <form action="{{ route('comunas.destroy', ['comuna' => $comuna->comu_codi]) }}"
           method='POST' style="display: inline-block">
           @method('delete')
           @csrf 
-          <input class="btn btn-danger" type="submit" value="Delete">
+          <input class="btn btn-danger" type="submit" value="Eliminar">
         </form>
       </td>
     </tr>
