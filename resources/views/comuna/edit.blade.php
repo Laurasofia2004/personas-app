@@ -14,7 +14,7 @@
 <body>
     <div class="container">
         <h1>Editar Comuna</h1>
-        <form method="POST" action="{{ route('comunas.update', ['comuna' => $comuna->comu_codi]) }}">
+        <form method="POST" action="{{ route('comunas.update', ['comuna' =>$comuna->comu_codi]) }}">
             @method('put')
             @csrf
             <div class="mb-3">
