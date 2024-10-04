@@ -8,45 +8,48 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Editar Comuna</title>
+    <title>Editar Municipio</title>
 </head>
 
 <body>
     <div class="container">
-        <h1>Editar Comuna</h1>
-        <form method="POST" action="{{ route('comunas.update', ['comuna' => $comuna->comu_codi]) }}">
+        <h1>Editar Municipio</h1>
+        <form method="POST" action="{{ route('municipios.update', ['municipio' => $municipio->muni_codi]) }}">
             @method('put')
             @csrf
             <div class="mb-3">
                 <label for="codigo" class="form-label">Codigo</label>
                 <input type="text" class="form-control" id="id" aria-describedby="codigoHelp" name="id"
-                    disabled="disabled" value="{{ $comuna->comucodi }}">
-                <div id="codigoHelp" class="form-text">Codigo Comuna</div>
+                    disabled="disabled" value="{{ $municipio->muni_codi }}">
+                <div id="codigoHelp" class="form-text">Codigo Municipio</div>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Municipio</label>
+                <input type="text" required class="form-control" id="name" aria-describedby="nameHelp"
+                    name="name" placeholder="Nombre Municipio" value="{{ $municipio->muni_nomb }}">
             </div>
 
-            <div class="mb-3">
-                <label for="name" class="form-label">Comuna</label>
-                <input type="text" class="form-control" id="name" arial-describedby="nameHelp" name="name"
-                    placeholder="Nombre Comuna">
-            </div>
-            <label for="municipality">Municipio:</label>
-            <select class="form-select" id="municipality" name="code" required>
+            <label for="departament">Departamento</label>
+            <select class="form-select" id="departament" name="code" requeried>
                 <option selected disabled value="">Elegir uno...</option>
-                @foreach ($municipios as $municipio)
-                    @if ($municipio->muni_codi == $comuna->muni_codi)
-                        <option selected value="{{ $municipio->muni_codi }}">{{ $municipio->muni_nomb }}</option>
+                @foreach ($departamentos as $departamento)
+                    @if ($departamento->depa_codi == $municipio->depa_codi)
+                        <option selected value="{{ $departamento->depa_codi }}">{{ $departamento->depa_nomb }}</option>
                     @else
-                        <option value="{{ $municipio->muni_codi }}">{{ $municipio->muni_nomb }}</option>
+                        <option value="{{ $departamento->depa_codi }}">{{ $departamento->depa_nomb }}</option>
                     @endif
                 @endforeach
             </select>
             <div class="mb-3">
                 <button type="submit" class="btn btn-primary">Actualizar</button>
-                <a href="{{ route('comunas.index') }}" class="btn btn-warning">Cancelar</a>
+                <a href="{{ route('municipios.index') }}" class="btn btn-warning">Cancelar</a>
             </div>
-
         </form>
+
     </div>
+
+
+
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
