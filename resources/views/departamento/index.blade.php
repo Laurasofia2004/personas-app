@@ -16,7 +16,7 @@
 <body>
     <div class="container">
         <h1>Listado de Departamentos</h1>
-        <a href="{{ route('departamentos.create')}}" class="btn btn-success">Agregar departamento</a>
+        <a href="{{ route('departamentos.create') }}" class="btn btn-success">Agregar departamento</a>
         <table class="table">
             <thead>
                 <tr>
@@ -28,12 +28,20 @@
             </thead>
             <tbody>
                 @foreach ($departamentos as $departamento)
-                <tr>
-                    <th scope="row">{{$departamento->depa_codi}}</th>
-                    <td>{{ $departamento->depa_nomb}}</td>
-                    <td>{{ $departamento->pais_nomb}}</td>
-                    <td><span>Acciones</span></td>
-                </tr>
+                    <tr>
+                        <th scope="row">{{ $departamento->depa_codi }}</th>
+                        <td>{{ $departamento->depa_nomb }}</td>
+                        <td>{{ $departamento->pais_nomb }}</td>
+                        <td>
+                            <form
+                                action="{{ route('departamentos.destroy', ['departamento' => $departamento->depa_codi]) }}"
+                                method='POST' style="display: inline-block">
+                                @method('delete')
+                                @csrf
+                                <input class="btn btn-danger" type="submit" value="Eliminar">
+                            </form>
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
