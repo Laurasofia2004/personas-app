@@ -16,7 +16,7 @@
 <body>
     <div class="container">
         <h1>Listado de Municipios</h1>
-        <a href="{{route('municipios.create')}}" class="btn btn-success">Agregar Municipio</a>
+        <a href="{{ route('municipios.create') }}" class="btn btn-success">Agregar Municipio</a>
 
         <table class="table">
             <thead>
@@ -33,7 +33,15 @@
                         <th scope="row">{{ $municipio->muni_codi }}</th>
                         <td>{{ $municipio->muni_nomb }}</td>
                         <td>{{ $municipio->depa_nomb }}</td>
-                        <td>Acciones</td>
+
+                        <td>
+                            <form action="{{ route('municipios.destroy', ['municipio' => $municipio->muni_codi]) }}"
+                                method="POST" style="display: inline-block">
+                                @method('delete')
+                                @csrf
+                                <input class="btn btn-danger" type="submit" value="Eliminar">
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
