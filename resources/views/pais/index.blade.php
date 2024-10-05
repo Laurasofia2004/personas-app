@@ -31,7 +31,7 @@
             <tr>
                 <th scope="row">{{ $pais->pais_codi}}</th>
                 <td>{{$pais->pais_nomb}}</td>
-                <td>{{$pais->naci_codi}}</td>
+                <td>{{$pais->naci_nomb}}</td>
                 <td><span>Acciones</span></td>
             </tr>
         @endforeach
