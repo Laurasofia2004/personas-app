@@ -16,11 +16,10 @@ class PaisController extends Controller
     public function index()
     {
         //$paises = Pais::all();
-        $paises = DB::table('tb_pais')
-        ->join('tb_nacionalidad', 'tb_pais.naci_codi', '=','tb_nacionalidad.naci_codi')
-        ->select('tb_pais.*','tb_nacionalidad.naci_nomb')
-        ->get();
-        return view('pais.index' , ['paises' =>$paises]);
+        {
+        $paises = DB::table('tb_pais')->get();
+        return view('pais.index', ['paises' => $paises]);
+        }
     }
 
     /**
@@ -30,7 +29,10 @@ class PaisController extends Controller
      */
     public function create()
     {
-        //
+        $paises = DB::table('tb_pais')
+        ->orderBy('pais_nomb')
+        ->get();
+    return view('pais.new', ['paises' => $paises]);
     }
 
     /**
@@ -41,9 +43,16 @@ class PaisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        {
+            $pais = new Pais();
+            $pais->pais_codi = $request->pais_codi;
+            $pais->pais_nomb = $request->pais_nomb;
+            $pais->pais_capi = $request->pais_capi;
+            $pais->save();
+        
+            return redirect()->route('paises.index');
+        }
     }
-
     /**
      * Display the specified resource.
      *

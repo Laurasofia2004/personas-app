@@ -30,7 +30,7 @@
                     name="name" placeholder="Nombre Municipio">
             </div>
 
-            <label for="departament">Departamento</label>
+            <label for="departament">Departamento:</label>
             <select class="form-select" id="departament" name="code" requeried>
                 <option selected disabled value="">Elegir uno...</option>
                 @foreach ($departamentos as $departamento)

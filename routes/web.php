@@ -31,4 +31,6 @@ Route::delete('/departamentos/{departamento}' , [DepartamentoController::class, 
 Route::put('/departamentos/{departamento}' , [DepartamentoController::class, 'update']) ->name('departamentos.update');
 Route::get('/departamentos/{departamento}/edit' , [DepartamentoController::class, 'edit']) ->name('departamentos.edit');
 //rutas paises
-Route::get('/paises' , [PaisController::class, 'index']);
+Route::get('/paises' , [PaisController::class, 'index']) ->name('paises.index');;
+Route::post('/paises' , [PaisController::class, 'store']) ->name('paises.store');
+Route::get('/paises/create' , [PaisController::class, 'create']) ->name('paises.create');
